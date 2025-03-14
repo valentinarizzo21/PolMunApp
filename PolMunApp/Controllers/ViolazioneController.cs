@@ -15,7 +15,10 @@ namespace PolMunApp.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Violazioni.ToListAsync());
+            var violazioni = await _context.Violazioni.ToListAsync();
+            var totalePuntiDecurtati = violazioni.Sum(v => v.PuntiDecurtati);
+            ViewData["TotalePuntiDecurtati"] = totalePuntiDecurtati;
+            return View(violazioni);
         }
         public IActionResult Create()
         {

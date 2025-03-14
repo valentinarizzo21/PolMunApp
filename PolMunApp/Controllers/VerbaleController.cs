@@ -28,7 +28,7 @@ namespace PolMunApp.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,TrasgressoreId,ViolazioneId,DataViolazione,Importo,DecurtamentoPunti")] Verbale verbale)
+        public async Task<IActionResult> Create([Bind("Id,TrasgressoreId,ViolazioneId,DataViolazione,Importo,Trasgressione, Violazione")] Verbale verbale)
         {
             if (ModelState.IsValid)
             {
@@ -59,7 +59,7 @@ namespace PolMunApp.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,TrasgressoreId,ViolazioneId,DataViolazione,Importo,DecurtamentoPunti")] Verbale verbale)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,TrasgressoreId,ViolazioneId,DataViolazione,Importo,Trasgressione, Violazione")] Verbale verbale)
         {
             if (id != verbale.ID)
             {
@@ -109,6 +109,7 @@ namespace PolMunApp.Controllers
             return View(verbale);
         }
 
+
      
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -119,6 +120,8 @@ namespace PolMunApp.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+
+        
         private bool VerbaleExists(int id)
         {
             return _context.Verbali.Any(e => e.ID == id);
