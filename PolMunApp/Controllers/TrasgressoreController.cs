@@ -114,7 +114,6 @@ namespace PolMunApp.Controllers
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Errore nell'eliminazione: {ex.Message}");
                 return BadRequest("Impossibile eliminare il trasgressore.");
             }
 

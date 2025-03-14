@@ -16,7 +16,7 @@
             <th>@Html.DisplayNameFor(model => model.Importo)</th>
             <th>@Html.DisplayNameFor(model => model.Descrizione)</th>
             <th>@Html.DisplayNameFor(model => model.PuntiDecurtati)</th>
-            <th>Azioni</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -27,10 +27,10 @@
                 <td>@violazione.Descrizione</td>
                 <td>@violazione.PuntiDecurtati</td>
                 <td>
-                    <a href="@Url.Action("Edit", new { id = violazione.ID })" class="btn btn-warning">Modifica</a> |
-                    <a href="@Url.Action("Delete", new { id = violazione.ID })" class="btn btn-danger">Elimina</a>
+                    <a href="@Url.Action("Edit", new { id = violazione.ID })" class="btn btn-warning">Modifica</a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
+

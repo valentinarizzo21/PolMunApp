@@ -51,7 +51,7 @@ namespace PolMunApp.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Descrizione,Importo,PuntiDecurtati")] Violazione violazione)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Importo,Descrizione,PuntiDecurtati")] Violazione violazione)
         {
             if (id != violazione.ID)
             {
@@ -76,9 +76,9 @@ namespace PolMunApp.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index)); 
             }
-            return View(violazione);
+            return View(violazione);  
         }
         public async Task<IActionResult> Delete(int? id)
         {
@@ -97,14 +97,17 @@ namespace PolMunApp.Controllers
             return View(violazione);
         }
 
-        [HttpPost, ActionName("Delete")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var violazione = await _context.Violazioni.FindAsync(id);
-            _context.Violazioni.Remove(violazione);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            if (violazione != null)
+            {
+                _context.Violazioni.Remove(violazione);
+                await _context.SaveChangesAsync();
+            }
+            return Json(new { success = true });
         }
 
         private bool ViolazioneExists(int id)

@@ -9,7 +9,7 @@
 <h4>Violazione</h4>
 <hr />
 
-<form asp-action="Edit" method="post">
+<form id="editForm" asp-action="Edit" method="post">
     <div class="form-group">
         <label asp-for="Importo" class="control-label"></label>
         <input asp-for="Importo" class="form-control" />
@@ -17,7 +17,7 @@
     </div>
     <div class="form-group">
         <label asp-for="Descrizione" class="control-label"></label>
-        <input asp-for="Descrizione" class="form-control" type="date" />
+        <input asp-for="Descrizione" class="form-control" />
         <span asp-validation-for="Descrizione" class="text-danger"></span>
     </div>
     <div class="form-group">
@@ -25,7 +25,16 @@
         <input asp-for="PuntiDecurtati" class="form-control" />
         <span asp-validation-for="PuntiDecurtati" class="text-danger"></span>
     </div>
-   
-    <button type="submit" class="btn btn-primary">Salva</button>
+
+    <a href="#" id="saveButton" class="btn btn-primary">Salva</a>
     <a href="@Url.Action("Index")" class="btn btn-secondary">Annulla</a>
 </form>
+
+@section Scripts {
+    <script>
+        document.getElementById('saveButton').addEventListener('click', function (event) {
+            event.preventDefault();  
+            document.getElementById('editForm').submit();
+        });
+    </script>
+}
