@@ -1,0 +1,45 @@
+﻿@model IEnumerable<PoliziaMunicipaleApp.Models.Trasgressore>
+
+@{
+    ViewData["Title"] = "Trasgressori";
+}
+
+<h1>Trasgressori</h1>
+
+<p>
+    <a href="@Url.Action("Create", "Trasgressore")">Aggiungi</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Cognome</th>
+            <th>Indirizzo</th>
+            <th>Telefono</th>
+            <th>Email</th>
+            <th>CodiceFiscale</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var trasgressore in Model)
+        {
+            <tr>
+                <td>@trasgressore.Nome</td>
+                <td>@trasgressore.Cognome</td>
+                <td>@trasgressore.Indirizzo</td>
+                <td>@trasgressore.Telefono</td>
+                <td>@trasgressore.Email</td>
+                <td>@trasgressore.CodiceFiscale</td>
+                <td>
+                    <a href="@Url.Action("Edit", "Trasgressore", new { id = trasgressore.ID })">Modifica</a> |
+                    <a href="@Url.Action("DeleteDirect", "Trasgressore", new { id = trasgressore.ID })"
+                       class="text-danger"
+                       onclick="return confirm('Sei sicuro di voler eliminare @trasgressore.Nome @trasgressore.Cognome?');">
+                        Elimina
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

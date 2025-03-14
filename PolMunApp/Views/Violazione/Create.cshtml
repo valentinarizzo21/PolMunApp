@@ -1,0 +1,30 @@
+﻿@model PoliziaMunicipaleApp.Models.Violazione
+
+@{
+    ViewData["Title"] = "Aggiungi Violazione";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<h4>Violazione</h4>
+<hr />
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="Importo" class="control-label"></label>
+        <input asp-for="Importo" class="form-control" />
+        <span asp-validation-for="Importo" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Descrizione" class="control-label"></label>
+        <input asp-for="Descrizione" class="form-control" type="date" />
+        <span asp-validation-for="Descrizione" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PuntiDecurtati" class="control-label"></label>
+        <input asp-for="PuntiDecurtati" class="form-control" />
+        <span asp-validation-for="PuntiDecurtati" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-success">Aggiungi</button>
+    <a href="@Url.Action("Index")" class="btn btn-secondary">Annulla</a>
+</form>

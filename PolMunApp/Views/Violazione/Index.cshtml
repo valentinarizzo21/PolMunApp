@@ -1,0 +1,36 @@
+﻿@model IEnumerable<PoliziaMunicipaleApp.Models.Violazione>
+
+@{
+    ViewData["Title"] = "Elenco Violazioni";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<p>
+    <a href="@Url.Action("Create")" class="btn btn-primary">Aggiungi Violazione</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Importo)</th>
+            <th>@Html.DisplayNameFor(model => model.Descrizione)</th>
+            <th>@Html.DisplayNameFor(model => model.PuntiDecurtati)</th>
+            <th>Azioni</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var violazione in Model)
+        {
+            <tr>
+                <td>@violazione.Importo</td>
+                <td>@violazione.Descrizione</td>
+                <td>@violazione.PuntiDecurtati</td>
+                <td>
+                    <a href="@Url.Action("Edit", new { id = violazione.ID })" class="btn btn-warning">Modifica</a> |
+                    <a href="@Url.Action("Delete", new { id = violazione.ID })" class="btn btn-danger">Elimina</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

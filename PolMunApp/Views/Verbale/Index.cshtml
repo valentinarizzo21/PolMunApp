@@ -1,0 +1,36 @@
+﻿@model IEnumerable<PoliziaMunicipaleApp.Models.Verbale>
+
+@{
+    ViewData["Title"] = "Elenco Verbali";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<p>
+    <a href="@Url.Action("Create")" class="btn btn-primary">Aggiungi Verbale</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.TrasgressoreID)</th>
+            <th>@Html.DisplayNameFor(model => model.ViolazioneID)</th>
+            <th>@Html.DisplayNameFor(model => model.DataViolazione)</th>
+            <th>Azioni</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var verbale in Model)
+        {
+            <tr>
+                <td>@verbale.TrasgressoreID</td>
+                <td>@verbale.ViolazioneID</td>
+                <td>@verbale.DataViolazione.ToString("dd/MM/yyyy")</td>
+                <td>
+                    <a href="@Url.Action("Edit", new { id = verbale.ID })" class="btn btn-warning">Modifica</a> |
+                    <a href="@Url.Action("Delete", new { id = verbale.ID })" class="btn btn-danger">Elimina</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

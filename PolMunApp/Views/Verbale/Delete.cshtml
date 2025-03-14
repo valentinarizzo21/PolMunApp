@@ -1,0 +1,16 @@
+﻿@model PoliziaMunicipaleApp.Models.Verbale
+
+@{
+    ViewData["Title"] = "Elimina Verbale";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<h4>Sei sicuro di voler eliminare il verbale emesso il @Model.DataViolazione.ToString("dd/MM/yyyy")?</h4>
+<hr />
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="ID" />
+    <button type="submit" class="btn btn-danger">Elimina</button>
+    <a href="@Url.Action("Index")" class="btn btn-secondary">Annulla</a>
+</form>
